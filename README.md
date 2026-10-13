@@ -47,6 +47,11 @@ If you like the app, go give it 5 stars and a review! It helps more people find 
 
 If you know a language other than English, help us translate the app!
 
+## Try it in a browser
+
+A web build with sample data runs without any native tooling or service keys:
+`yarn install --ignore-scripts && yarn web`. See [web/README.md](web/README.md).
+
 ## Getting started
 
 Start by cloning repository and installing dependencies using yarn

@@ -15,6 +15,7 @@ const TimerText: FC<Props> = ({ minutesLong, style }) => {
     <View style={style}>
       <TimerContainer>
         <Time>{hours}</Time>
+        <Time>:</Time>
         <Time>{minutes < 10 ? `0${minutes}` : minutes}</Time>
       </TimerContainer>
     </View>

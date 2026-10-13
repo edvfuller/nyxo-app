@@ -31,8 +31,8 @@ const CoachingMonthCard: FC<Props> = ({ month, actionsEnabled = true }) => {
   const weeks = month?.weeks?.length ?? 0
   const lessons = month?.lessons?.length ?? 0
 
-  const [editCoaching] = useUpdateUser()
-  const [deleteCoaching] = useDeleteCoaching()
+  const { mutate: editCoaching } = useUpdateUser()
+  const { mutate: deleteCoaching } = useDeleteCoaching()
 
   const setActive = () => {
     editCoaching({

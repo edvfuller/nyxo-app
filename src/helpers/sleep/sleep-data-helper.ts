@@ -192,7 +192,7 @@ export const calculateEfficiency = (
     return '-'
   }
 
-  return `${Math.round((totalBedTime / totalSleepTime) * 100)} %`
+  return `${Math.round((totalSleepTime / totalBedTime) * 100)} %`
 }
 
 export const convertNightValue = (value: Value): NightValue => {

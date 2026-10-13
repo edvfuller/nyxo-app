@@ -31,7 +31,7 @@ const LessonListItem: FC<Props> = ({ lesson, locked }) => {
   const time = getReadingTime(lesson.lessonContent?.json)
 
   const handlePress = () => {
-    if (locked) {
+    if (!locked) {
       navigate('Lesson', {
         slug: `${lesson?.slug}`,
         id: 'id'

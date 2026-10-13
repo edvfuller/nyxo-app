@@ -72,7 +72,7 @@ const Bedtime: FC<Props> = ({ clockSize }) => {
       <View>
         <SleepTimeContainer
           style={{ bottom: clockSize / 2 }}
-          minutesLong={calculateMinutesFromAngle(startA)}
+          minutesLong={calculateMinutesFromAngle(angleL)}
         />
         <CircularSlider
           startAngle={startA}

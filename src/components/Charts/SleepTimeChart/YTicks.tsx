@@ -14,8 +14,7 @@ const YTicks: FC<Props> = ({ chartWidth, scaleY, ticks }) => {
   const timeTicks = ticks.map((tick, index) => {
     return (
       <G key={index}>
-        <Line
-          stroke={color}
+        <TickLine
           strokeWidth={0.25}
           x1={40}
           x2={chartWidth}
@@ -27,7 +26,7 @@ const YTicks: FC<Props> = ({ chartWidth, scaleY, ticks }) => {
           key={index}
           x={5}
           y={scaleY(tick)}>
-          {format(new Date(), 'HH:mm')}
+          {format(tick, 'HH:mm')}
         </StyledText>
       </G>
     )
@@ -37,6 +36,10 @@ const YTicks: FC<Props> = ({ chartWidth, scaleY, ticks }) => {
 }
 
 export default memo(YTicks)
+
+const TickLine = styled(Line).attrs(({ theme }) => ({
+  stroke: theme.SECONDARY_TEXT_COLOR
+}))``
 
 const StyledText = styled(Text).attrs(({ theme }) => ({
   fill: theme.PRIMARY_TEXT_COLOR

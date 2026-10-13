@@ -3,8 +3,14 @@ import { CloseModalButton } from '@components/modals/CloseModalButton'
 import { H2 } from '@components/Primitives/Primitives'
 import TranslatedText from '@components/TranslatedText'
 import getRating from '@helpers/rating'
-import { toNightTime } from '@helpers/time'
+import { minutesToHoursString, toNightTime } from '@helpers/time'
 import { useAppDispatch, useAppSelector } from '@hooks/redux'
+import { toggleExplanationsModal } from '@reducers/modal'
+import { getAsleepDuration, getInBedDuration } from '@reducers/nights'
+import {
+  getGoToSleepWindowEnd,
+  getGoToSleepWindowStart
+} from '@selectors/insight-selectors/Insights'
 import colors from '@styles/colors'
 import { fonts } from '@styles/themes'
 import { format, parseISO } from 'date-fns'
@@ -15,14 +21,14 @@ import styled from 'styled-components/native'
 const ExplanationsModal: FC = () => {
   const dispatch = useAppDispatch()
   const isVisible = useAppSelector((state) => state.modal.explanations)
-  const inbed = '' //minutesToHoursString(useAppSelector(getInBedDuration))
-  const asleep = '' //minutesToHoursString(useAppSelector(getAsleepDuration))
+  const inbed = minutesToHoursString(useAppSelector(getInBedDuration))
+  const asleep = minutesToHoursString(useAppSelector(getAsleepDuration))
   const rating = 2 // = useAppSelector(getSelectedDayRating)
   const { color, icon } = getRating(rating)
   const date = useAppSelector((state) => state.calendar.selectedDay)
   const formattedDate = toNightTime(date)
-  const windowStart = new Date().toISOString() // useAppSelector(getGoToSleepWindowStart)
-  const windowEnd = new Date().toISOString() //useAppSelector(getGoToSleepWindowEnd)
+  const windowStart = useAppSelector(getGoToSleepWindowStart)
+  const windowEnd = useAppSelector(getGoToSleepWindowEnd)
 
   const stats = [
     {

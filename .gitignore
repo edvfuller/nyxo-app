@@ -151,3 +151,6 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 amplify/team-provider-info.json
+
+# Web demo build output
+web/dist/

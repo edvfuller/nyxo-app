@@ -29,6 +29,14 @@ const GET_WEEK = gql`
             cover {
               url
             }
+            lessonContent {
+              json
+            }
+            authorCardCollection {
+              items {
+                name
+              }
+            }
             section {
               title
               order

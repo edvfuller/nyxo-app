@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type State = {
   rating: boolean
@@ -22,20 +22,32 @@ const modalSlice = createSlice({
   name: 'modalSlice',
   initialState,
   reducers: {
-    toggleRatingModal: (state, action) => {
-      state.rating = action.payload.value
+    toggleRatingModal: (state, action: PayloadAction<boolean | undefined>) => {
+      state.rating = action.payload ?? !state.rating
     },
-    toggleExplanationsModal: (state, action) => {
-      state.explanations = action.payload.value
+    toggleExplanationsModal: (
+      state,
+      action: PayloadAction<boolean | undefined>
+    ) => {
+      state.explanations = action.payload ?? !state.explanations
     },
-    toggleCalendarModal: (state, action) => {
-      state.calendar = action.payload.value
+    toggleCalendarModal: (
+      state,
+      action: PayloadAction<boolean | undefined>
+    ) => {
+      state.calendar = action.payload ?? !state.calendar
     },
-    toggleEditHabitModal: (state, action) => {
-      state.editHabit = action.payload.value
+    toggleEditHabitModal: (
+      state,
+      action: PayloadAction<boolean | undefined>
+    ) => {
+      state.editHabit = action.payload ?? !state.editHabit
     },
-    toggleNewHabitModal: (state, action) => {
-      state.newHabit = action.payload.value
+    toggleNewHabitModal: (
+      state,
+      action: PayloadAction<boolean | undefined>
+    ) => {
+      state.newHabit = action.payload ?? !state.newHabit
     }
   }
 })

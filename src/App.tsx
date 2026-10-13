@@ -2,6 +2,7 @@ import Amplify from '@aws-amplify/core'
 import { useTheme } from '@hooks/useTheme'
 import * as Sentry from '@sentry/react-native'
 import React, { FC, useEffect, useRef } from 'react'
+import { Platform } from 'react-native'
 import { addEventListener, removeEventListener } from 'react-native-localize'
 import Purchases, {
   PurchaserInfo,
@@ -131,7 +132,7 @@ export const App: FC = () => {
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <StyledStatusBar animated />
         <NavigationContainer
-          linking={linking}
+          linking={Platform.OS === 'web' ? undefined : linking}
           ref={ref}
           theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
           <Root />

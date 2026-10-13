@@ -3,6 +3,7 @@ import Clock from '@components/Clock'
 import DayStrip from '@components/DayStrip'
 import { IconBold } from '@components/iconRegular'
 import { EditNightHeader } from '@components/MainScreenSpecific/EditNightHeader'
+import ExplanationsModal from '@components/modals/ExplanationsModal'
 import { SafeAreaView } from '@components/Primitives/Primitives'
 import CalendarModal from '@components/sleep/CalendarModal'
 import InsightsCard from '@components/sleep/InsightsCard'
@@ -76,6 +77,7 @@ const Sleep: FC = () => {
       </ScrollView>
 
       <CalendarModal />
+      <ExplanationsModal />
     </SafeAreaView>
   )
 }

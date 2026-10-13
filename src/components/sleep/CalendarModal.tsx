@@ -26,7 +26,7 @@ const CalendarModal: FC = () => {
   }
 
   const toggleModal = () => {
-    dispatch(toggleCalendarModal(true))
+    dispatch(toggleCalendarModal(false))
   }
 
   const { markedDates } = useMemo(
@@ -41,7 +41,6 @@ const CalendarModal: FC = () => {
   )
 
   const getMonthData: DateCallbackHandler = ({ month, year }) => {
-    dispatch()
     // fetchSleepData(
     //   new Date(year, month - 1, 1).toISOString(),
     //   new Date(year, month - 1, 0).toISOString()

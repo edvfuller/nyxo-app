@@ -15,7 +15,12 @@ import {
 } from '@data-fetching/remote/coaching'
 import { getActiveCoaching } from '@graphql/custom/queries'
 import { updateCoachingData } from '@graphql/mutations'
-import { queryCache, QueryResult, useMutation, useQuery } from 'react-query'
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+  UseQueryResult
+} from 'react-query'
 import { writeToStorage } from 'persist-queries'
 import { isLoggedIn } from '@helpers/auth'
 
@@ -73,13 +78,13 @@ export const completeLessonMutation = async ({
 
 /* HOOKS */
 
-export const useListCoaching = (): QueryResult<CoachingItems | null> => {
+export const useListCoaching = (): UseQueryResult<CoachingItems | null> => {
   return useQuery('listCoaching', listCoaching)
 }
 
 export const useGetCoaching = (
   id: string
-): QueryResult<GetCoachingDataQuery['getCoachingData']> => {
+): UseQueryResult<GetCoachingDataQuery['getCoachingData']> => {
   return useQuery(['coaching', { id }], getCoaching, {
     onSuccess: (data) => writeToStorage('coaching', data)
   })
@@ -92,25 +97,27 @@ export const useCreateCoaching = () => {
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useUpdateCoaching = () => {
+  const queryClient = useQueryClient()
   return useMutation(updateCoaching, {
     onSuccess: () => {
-      queryCache.invalidateQueries('userActiveCoaching')
-      queryCache.invalidateQueries('listCoaching')
+      queryClient.invalidateQueries('userActiveCoaching')
+      queryClient.invalidateQueries('listCoaching')
     }
   })
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useDeleteCoaching = () => {
+  const queryClient = useQueryClient()
   return useMutation(deleteCoaching, {
     onSuccess: () => {
-      queryCache.invalidateQueries('userActiveCoaching')
-      queryCache.invalidateQueries('listCoaching')
+      queryClient.invalidateQueries('userActiveCoaching')
+      queryClient.invalidateQueries('listCoaching')
     }
   })
 }
 
-export const useGetActiveCoaching = (): QueryResult<CoachingPeriod | null> => {
+export const useGetActiveCoaching = (): UseQueryResult<CoachingPeriod | null> => {
   return useQuery('userActiveCoaching', getUserActiveCoaching, {
     onSuccess: (data) => writeToStorage('userActiveCoaching', data)
   })

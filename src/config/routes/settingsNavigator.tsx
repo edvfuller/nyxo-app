@@ -23,12 +23,12 @@ const SettingsNavigator: FC = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={ROUTE.SOURCE_SETTINGS}
+        name="Sources"
         component={SetSource}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={ROUTE.CLOUD_SETTINGS}
+        name="Cloud"
         component={CloudSettings}
         options={{ headerShown: false }}
       />
@@ -38,17 +38,17 @@ const SettingsNavigator: FC = () => {
         options={{ headerShown: false }}
       /> */}
       <Stack.Screen
-        name={ROUTE.COACHING_SETTINGS}
+        name="Coaching"
         component={CoachingSettings}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={ROUTE.THEME}
+        name="Theme"
         component={ThemeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={ROUTE.SUBSCRIPTION_SETTINGS}
+        name="Subscription"
         component={ManageSubscription}
         options={{ headerShown: false }}
       />
